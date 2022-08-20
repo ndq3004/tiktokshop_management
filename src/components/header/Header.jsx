@@ -51,9 +51,12 @@ const Header = () => {
    console.log(path)
    if(path.includes("items")){
        setShowSearch(true)
+   }else{
+     setShowSearch(false)
    }
+   
   }, [setShowSearch, currentLocation])
-
+  
   const toggleDrawer = (e) => {
     setOpenNav(false);
   };
