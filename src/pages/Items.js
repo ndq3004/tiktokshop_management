@@ -23,6 +23,9 @@ export default class Items extends React.Component {
   }
   
   componentDidMount(){
+    // setTimeout(function(){
+    //   window.location.reload()
+    // }, 1500)
   }
   
   render(){

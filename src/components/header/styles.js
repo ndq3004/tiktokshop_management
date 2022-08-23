@@ -28,7 +28,7 @@ export default makeStyles((theme) => ({
   },
   boxMenuList: {
     justifyContent: "space-between",
-    maxWidth: "250px",
+    maxWidth: "300px",
     display: "flex",
   },
   button: {

@@ -18,7 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function ListItemLink(props) {
   return <ListItem button {...props} />;
@@ -36,7 +36,7 @@ const Header = () => {
       title: "c",
     },
   ];
-  const pages = ["Items", "Reports", "payment"];
+  const pages = ["Home", "Items", "Reports", "payment"];
 
   const [isOpenNav, setOpenNav] = React.useState(false);
   const [showSearch, setShowSearch] = React.useState(false)
@@ -62,6 +62,9 @@ const Header = () => {
   };
 
   const getPath = (page) => {
+    if(page.toLowerCase() === "home"){
+      return "/"
+    }
     return "/" + page.toLowerCase();
   };
 
@@ -72,14 +75,9 @@ const Header = () => {
           <ListItem
             button
             key={page}
-            onClick={() => {
-              debugger;
-            }}
           >
             <ListItemLink
-              onClick={() => {
-                debugger;
-              }}
+              onClick={() => navigate(getPath(page))}
             >
               <ListItemText primary={page}></ListItemText>
             </ListItemLink>
@@ -117,25 +115,10 @@ const Header = () => {
                   >
                     {page}
                   </Button>
-                  // <ListItem button component="a" key={i} to={getPath(page)}>{page}</ListItem>
-                  // <Link to={getPath(page)} key={i}>{page}</Link>
                 ))}
               </div>
             )}
           </Box>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-          </div> */}
-          {/* <InputBase
-              placeholder="Search..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            /> */}
           {showSearch && <Autocomplete
             id="combo-box-demo"
             options={top100Films}
@@ -155,6 +138,7 @@ const Header = () => {
                     }}
                     {...params.InputProps}
                     {...rest}
+                    placeholder="Search items..."
                   />
                 </div>
               );
